@@ -308,15 +308,13 @@ private:
 
 template<typename T>
     void Assign(T& element) {
-        SingleLinkedList list1;
-        SingleLinkedList list2;
-        for (auto it = element.begin(); it != element.end(); ++it) {
-            list2.PushFront(*it);
+       SingleLinkedList list;
+        auto it = list.before_begin();
+        for (const auto& n : element) {
+            list.InsertAfter(it, n);
+            ++it;
         }
-        for (auto it = list2.begin(); it != list2.end(); ++it) {
-            list1.PushFront(*it);
-        }
-        swap(list1);
+        swap(list);
     }
 };
 
